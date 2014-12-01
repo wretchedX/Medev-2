@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    cout << "qq";
+    cout << "qq32";
     return 0;
 }
 
