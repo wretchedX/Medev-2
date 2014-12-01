@@ -1,0 +1,19 @@
+#define TAILLE-TABLEAU 5
+
+Position struct
+
+Enum Pierre blanc, noir, vide
+
+Plateau :
+Vector <Vector < Pierre>> tableau;
+
+void** tableaux; ou vector de vector de vector
+
+void afficher();
+
+void jouer(); //"main"
+
+int blancPris; //nb de blancs capturés
+int noirPris; //nb ** noirs **
+
+bool jeuFini(); 
