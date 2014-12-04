@@ -45,13 +45,13 @@ void Plateau::affichage() {
         for (int j = 0; j < tableau.size(); j++) {
             switch (tableau[i][j]) {
                 case BLANC: 
-                    cout << "B";
+                    cout << "B ";
                     break;
                 case NOIR:
-                    cout << "N";
+                    cout << "N ";
                     break;
                 case VIDE:
-                    cout << "+";
+                    cout << "+ ";
             }
         }
         cout << endl;
