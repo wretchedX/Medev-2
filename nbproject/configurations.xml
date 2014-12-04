@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Pierre.h</itemPath>
       <itemPath>Plateau.h</itemPath>
+      <itemPath>Structures.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -39,11 +39,11 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Pierre.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Plateau.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Plateau.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Structures.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -68,11 +68,11 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Pierre.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Plateau.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Plateau.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Structures.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
