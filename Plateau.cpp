@@ -17,7 +17,39 @@ Plateau::Plateau(const Plateau& orig) {
 Plateau::~Plateau() {
 }
 
-/*bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
+void Plateau::jouer()
+{
+    Pierre joueurActuel = Pierre.NOIR; 
+    
+    while(1)
+    {
+        affichage();
+        entreeClavier(joueurActuel);
+        
+        
+        
+    }
+}
+
+Position Plateau::entreeClavier(Pierre joueur)
+{
+    int ligne = -1;
+    int colonne = -1;
+    Position choix;
+    cout << "Joueur" << joueur << ", entrez numero de ligne (pour passer entrer un nombre negatif)" << endl;
+    cin >> ligne;
+    cout << endl << "Entrez numero de colonne" << endl;
+    cin >> colonne;
+    if (tableau[ligne][colonne] == VIDE)
+    {
+        choix.x = ligne;
+        choix.y = colonne;
+    }
+    return choix;
+}
+
+
+bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 {
     outGroupe.push_back(pos);
     bool pris = true;
@@ -38,7 +70,7 @@ Plateau::~Plateau() {
         }
     }
     return pris;
-}*/
+}
 
 void Plateau::affichage() {
     for (int i = 0; i < tableau.size(); i++) {
