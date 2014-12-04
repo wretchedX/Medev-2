@@ -18,7 +18,7 @@ public:
     vector <vector <vector <Pierre> > > tableauxPrecedents;
     virtual ~Plateau();
     void affichage(); 
-    
+    void initialisation();
 private:
 
 };

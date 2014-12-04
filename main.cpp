@@ -9,6 +9,8 @@
 
 int main(int argc, char** argv) {
     Plateau Jeu;
+    for i = 
+    Jeu.push_back(VIDE)
     int k;
     cin >> k;
     
