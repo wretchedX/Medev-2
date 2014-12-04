@@ -7,15 +7,18 @@
 
 #ifndef PLATEAU_H
 #define	PLATEAU_H
-#include <vector>
+
+#include "Structures.h"
 
 class Plateau {
 public:
     Plateau();
     Plateau(const Plateau& orig);
-    vector <vector <Pierre>> tableau;
-    vector <vector <vector <Pierre>>> tableauxPrecedents;
+    vector <vector <Pierre> > tableau;
+    vector <vector <vector <Pierre> > > tableauxPrecedents;
     virtual ~Plateau();
+    void affichage(); 
+    
 private:
 
 };
