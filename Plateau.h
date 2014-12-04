@@ -22,6 +22,8 @@ public:
     vector <vector <vector <Pierre>>> tableauxPrecedents;
     bool groupePris(Position pos, vector<Position> &outGroupe);
     virtual ~Plateau();
+    void affichage(); 
+    void initialisation();
 private:
 
 };
