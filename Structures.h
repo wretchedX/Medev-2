@@ -8,12 +8,12 @@
 #ifndef STRUCTURES_H
 #define	STRUCTURES_H
 
-enum Pierre {BLANC, NOIR, VIDE}
+enum Pierre {BLANC, NOIR, VIDE};
 
 struct Position {
     int x;
     int y;
-}
+};
 
 
 #endif	/* STRUCTURES_H */
