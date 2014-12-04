@@ -24,6 +24,9 @@ public:
     virtual ~Plateau();
     void affichage(); 
     void initialisation();
+    Position entreeClavier(Pierre joueur);
+    void jouer();
+    
 private:
 
 };

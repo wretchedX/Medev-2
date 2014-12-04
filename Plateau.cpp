@@ -6,7 +6,23 @@
  */
 
 #include "Plateau.h"
-#include <algorithm>
+//#include <algorithm>
+
+//Algorithm ne marche pas...
+bool contain ( vector<Position> v, Position e)
+{
+    for( int i = 0 ; i < v.size() ; i++)
+    {
+        if(v[i].x==e.x && v[i].y == e.y)
+            return true;
+    }
+    return false;
+}
+
+
+
+
+
 
 Plateau::Plateau() {
 }
@@ -19,7 +35,7 @@ Plateau::~Plateau() {
 
 void Plateau::jouer()
 {
-    Pierre joueurActuel = Pierre.NOIR; 
+    Pierre joueurActuel = NOIR; 
     
     while(1)
     {
@@ -59,11 +75,11 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
         for (int j = -1 ; j < 2 ; j+= 2)
         {
             Position next = {pos.x + i , pos.y + j};
-            bool estDejaDansGroupe = find(outGroupe.begin(),outGroupe.end(), next)!= outGroupe.end();
+            bool estDejaDansGroupe = contain (outGroupe,pos);
             
             if (next.x >= 0 && next.x < TAILLE_TABLEAU && next.y >= 0 && next.y < TAILLE_TABLEAU)
             {
-                if (tableau[next.x][next.y] == Pierre.VIDE) pris = false;
+                if (tableau[next.x][next.y] == VIDE) pris = false;
                 else if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe)
                      pris = pris && groupePris(next, outGroupe);
             }
