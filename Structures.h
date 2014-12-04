@@ -1,12 +1,12 @@
 /* 
- * File:   Pierre.h
+ * File:   Structures.h
  * Author: eleve
  *
  * Created on 1 décembre 2014, 15:48
  */
 
-#ifndef PIERRE_H
-#define	PIERRE_H
+#ifndef STRUCTURES_H
+#define	STRUCTURES_H
 
 enum Pierre {BLANC, NOIR, VIDE}
 
@@ -16,5 +16,5 @@ struct Position {
 }
 
 
-#endif	/* PIERRE_H */
+#endif	/* STRUCTURES_H */
 
