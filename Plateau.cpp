@@ -40,10 +40,17 @@ void Plateau::jouer()
     while(1)
     {
         affichage();
-        entreeClavier(joueurActuel);
+        Position pos = entreeClavier(joueurActuel);
+        if(pos.x >= 0 && pos.x < TAILLE_TABLEAU && pos.y >= 0 && pos.y < TAILLE_TABLEAU)
+        {
+            tableau[pos.x][pos.y] = joueurActuel;
+        }
+        else
+        {
+            
+        }
         
-        
-        
+        joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
     }
 }
 
@@ -56,10 +63,12 @@ Position Plateau::entreeClavier(Pierre joueur)
     cin >> ligne;
     cout << endl << "Entrez numero de colonne" << endl;
     cin >> colonne;
-    if (tableau[ligne][colonne] == VIDE)
-    {
-        choix.x = ligne;
-        choix.y = colonne;
+    if(ligne >= 0 && ligne < TAILLE_TABLEAU && colonne >= 0 && colonne < TAILLE_TABLEAU){
+        if (tableau[ligne][colonne] == VIDE)
+        {
+            choix.x = ligne;
+            choix.y = colonne;
+        }
     }
     return choix;
 }
@@ -89,7 +98,16 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 }
 
 void Plateau::affichage() {
+    system("cls");
+    
+    cout << "    \t";
+    for (int i = 0 ; i < tableau.size() ; i++)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
     for (int i = 0; i < tableau.size(); i++) {
+        cout << i << " : \t";
         for (int j = 0; j < tableau.size(); j++) {
             switch (tableau[i][j]) {
                 case BLANC: 
