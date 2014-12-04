@@ -7,6 +7,7 @@
 
 #include "Plateau.h"
 #include <algorithm>
+
 Plateau::Plateau() {
 }
 
@@ -16,16 +17,14 @@ Plateau::Plateau(const Plateau& orig) {
 Plateau::~Plateau() {
 }
 
-
-
-bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
+/*bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 {
     outGroupe.push_back(pos);
     bool pris = true;
     
-    for(int i = -1 ; i < 2 ; i++++)
+    for(int i = -1 ; i < 2 ; i += 2)
     {
-        for (int j = -1 ; j < 2 ; j++++)
+        for (int j = -1 ; j < 2 ; j+= 2)
         {
             Position next = {pos.x + i , pos.y + j};
             bool estDejaDansGroupe = find(outGroupe.begin(),outGroupe.end(), next)!= outGroupe.end();
@@ -39,12 +38,13 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
         }
     }
     return pris;
-}
-void Plateau::affichage(){
-    for (int i=1;i<=tableau.size();i++){
-        for (int j=1;j<=tableau.size();j++){
+}*/
+
+void Plateau::affichage() {
+    for (int i = 0; i < tableau.size(); i++) {
+        for (int j = 0; j < tableau.size(); j++) {
             switch (tableau[i][j]) {
-                case BLANC:
+                case BLANC: 
                     cout << "B";
                     break;
                 case NOIR:
@@ -58,3 +58,11 @@ void Plateau::affichage(){
     }
 }
 
+void Plateau::initialisation() {
+    for (int i = 0; i < TAILLE_TABLEAU; i++) {
+        vector < Pierre > colonne;
+        for (int j = 0; j < TAILLE_TABLEAU; j++)
+            colonne.push_back(VIDE);
+        tableau.push_back(colonne);
+    }
+}

@@ -19,8 +19,8 @@ public:
     Plateau();
     Plateau(const Plateau& orig);
     vector <vector <Pierre> > tableau;
-    vector <vector <vector <Pierre>>> tableauxPrecedents;
-    bool groupePris(Position pos, vector<Position> &outGroupe);
+    vector <vector <vector <Pierre> > > tableauxPrecedents;
+    //bool groupePris(Position pos, vector<Position> &outGroupe);
     virtual ~Plateau();
     void affichage(); 
     void initialisation();

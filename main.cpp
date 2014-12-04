@@ -9,11 +9,10 @@
 
 int main(int argc, char** argv) {
     Plateau Jeu;
-    for i = 
-    Jeu.push_back(VIDE)
+    Jeu.initialisation();
+    Jeu.affichage();
     int k;
     cin >> k;
-    
     return 0;
 }
 
