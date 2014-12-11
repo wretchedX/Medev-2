@@ -123,19 +123,31 @@ void Plateau::jouer()
                 }
                 else
                 {
-                    joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+                    if(ko()) {
+                        tableau = tableauxPrecedents.back();
+                    }
+                    else 
+                    { 
+                        tableauxPrecedents.push_back(tableau);
+                        joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+                    }
                     // On change de joueur
                 }                
                 
             }
             else
             {
-                //changement de joueur
-                joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+                if(ko()) 
+                {
+                    tableau = tableauxPrecedents.back();
+                }
+                else 
+                { 
+                    tableauxPrecedents.push_back(tableau);
+                    joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+                }
             }
         }
-        
-        
         
     }
 }
@@ -208,6 +220,11 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
         }
     }
     return pris;
+}
+
+bool Plateau::ko()
+{
+    return contain(tableauxPrecedents, tableau);
 }
 
 void Plateau::affichage() {
