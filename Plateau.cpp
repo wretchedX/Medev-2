@@ -61,11 +61,7 @@ void Plateau::jouer()
                     capturer(groupeOuest);
                     suicide = false;
                 }
-                if ((gpOuest == true)&&(tableau[pos.x-1][pos.y]==joueurActuel))
-                {
-                    //INTERDIT
-                    tableau[pos.x][pos.y] = VIDE;
-                }
+                
             }
             if(pos.y>0)
             {
@@ -76,11 +72,6 @@ void Plateau::jouer()
                 {
                     capturer(groupeNord);
                     suicide = false;
-                }
-                if ((gpNord == true)&&(tableau[pos.x][pos.y-1]==joueurActuel))
-                {
-                    //INTERDIT
-                    tableau[pos.x][pos.y] = VIDE;
                 }
             }
             if(pos.x<TAILLE_TABLEAU-1)
@@ -93,11 +84,6 @@ void Plateau::jouer()
                     capturer(groupeEst);
                     suicide = false;
                 }
-                if ((gpEst == true)&&(tableau[pos.x+1][pos.y]==joueurActuel))
-                {
-                    //INTERDIT
-                    tableau[pos.x][pos.y] = VIDE;
-                }
             }
             if(pos.y<TAILLE_TABLEAU-1)
             {
@@ -109,26 +95,30 @@ void Plateau::jouer()
                     capturer(groupeSud);
                     suicide = false;
                 }
-                if ((gpSud == true)&&(tableau[pos.x][pos.y+1]==joueurActuel))
+            }
+            if(suicide)
+            {
+                if(groupePris(pos,*(new vector<Position>)))
                 {
-                    //INTERDIT
                     tableau[pos.x][pos.y] = VIDE;
+                    //Le joueur rejoue.
                 }
+                else
+                {
+                    joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+                    // On change de joueur
+                }                
+                
+            }
+            else
+            {
+                //changement de joueur
+                joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
             }
         }
-        else
-        {
-            
-        }
-        if(suicide)
-        {
-            //coup invalide : le joueur doit rejouer
-        }
-        else
-        {
-            //changement de joueur
-            joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
-        }
+        
+        
+        
     }
 }
 
@@ -157,10 +147,10 @@ void Plateau::capturer(vector<Position> groupe)
     Pierre couleur;
     int points = groupe.size();
     for (int i = 0 ; i < groupe.size() ; i++)
-    {/*
-        couleur = groupe[i];
-        groupe[i] = VIDE;
-    */}
+    {
+        couleur = tableau[groupe[i].x][groupe[i].y];
+        tableau[groupe[i].x][groupe[i].y] = VIDE;
+    }
     if (couleur == NOIR)
     {
         captureBlanc+=points;
