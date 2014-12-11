@@ -19,6 +19,24 @@ bool contain ( vector<Position> v, Position e)
     return false;
 }
 
+bool contain (vector <vector <vector <Pierre> > > v, vector< vector<Pierre> > e)
+{
+    for ( int i = 0  ;i < v.size() ; i++)
+    {
+        bool equal = true;
+        if( v[i].size() == e.size() ) {
+            for (int j = 0 ; j < e.size() && equal ; j++)
+            {
+                if( v[i][j].size() == e[j].size() && equal ) {
+                    for(int k = 0 ; k < e[j].size() ; k++) {
+                        if(v[i][j][k] != e[j][k]) equal = false;
+                    }
+                } else equal = false;
+            }
+        } else equal = false;     
+        if(equal) return true;
+    }
+}
 
 
 

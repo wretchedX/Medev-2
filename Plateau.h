@@ -27,6 +27,7 @@ public:
     Position entreeClavier(Pierre joueur);
     void jouer();
     void capturer(vector<Position> groupe);
+    bool ko();
 //private 
     int captureBlanc;
     int captureNoir;
@@ -35,6 +36,6 @@ private:
 };
 
 bool contain ( vector<Position> v, Position e);
-
+bool contain (vector <vector <vector <Pierre> > > v, vector< vector<Pierre> > e);
 #endif	/* PLATEAU_H */
 
