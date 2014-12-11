@@ -20,7 +20,7 @@ public:
     Plateau(const Plateau& orig);
     vector <vector <Pierre> > tableau;
     vector <vector <vector <Pierre> > > tableauxPrecedents;
-    bool groupePris(Position pos, vector<Position> &outGroupe);
+    bool groupePris(Position pos, vector<Position> &outGroupe); // outgroupe = le groupe qui contient la pierre considérée (rempli par la fonction)
     virtual ~Plateau();
     void affichage(); 
     void initialisation();
