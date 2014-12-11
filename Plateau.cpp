@@ -7,8 +7,8 @@
 
 #include "Plateau.h"
 //#include <algorithm>
-
 //Algorithm ne marche pas...
+
 bool contain ( vector<Position> v, Position e)
 {
     for( int i = 0 ; i < v.size() ; i++)
@@ -163,8 +163,7 @@ void Plateau::capturer(vector<Position> groupe)
 
 bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 {
-    if(tableau[pos.x][pos.y] == VIDE) return false;
-    
+    if(tableau[pos.x][pos.y] == VIDE) return true;
     
     outGroupe.push_back(pos);
     bool pris = true;
@@ -178,13 +177,16 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
     for(int i = 0 ; i < nexts.size() ; i ++)
     {
         Position next = {pos.x + nexts[i].x , pos.y + nexts[i].y};
-        bool estDejaDansGroupe = contain (outGroupe,pos);
-
+        
         if (next.x >= 0 && next.x < TAILLE_TABLEAU && next.y >= 0 && next.y < TAILLE_TABLEAU)
         {
             if (tableau[next.x][next.y] == VIDE) pris = false;
-            else if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe)
-                 pris = pris && groupePris(next, outGroupe);
+            else {
+                bool estDejaDansGroupe = contain (outGroupe,next);
+                if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe) {
+                     pris = pris && groupePris(next, outGroupe);
+                }
+            }
         }
     }
     return pris;
