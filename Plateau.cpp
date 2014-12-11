@@ -39,18 +39,96 @@ void Plateau::jouer()
     
     while(1)
     {
+        Pierre joueurAutre = joueurActuel==NOIR?BLANC:NOIR;
+        
         affichage();
         Position pos = entreeClavier(joueurActuel);
+        
+        bool suicide = true;
+        
         if(pos.x >= 0 && pos.x < TAILLE_TABLEAU && pos.y >= 0 && pos.y < TAILLE_TABLEAU)
         {
             tableau[pos.x][pos.y] = joueurActuel;
+            
+            
+            if(pos.x>0)
+            {
+                Position ouest = {pos.x-1 , pos.y};
+                vector<Position> groupeOuest;
+                bool gpOuest = groupePris(ouest, groupeOuest);
+                if ((gpOuest == true)&&(tableau[pos.x-1][pos.y]==joueurAutre))
+                {
+                    capturer(groupeOuest);
+                    suicide = false;
+                }
+                if ((gpOuest == true)&&(tableau[pos.x-1][pos.y]==joueurActuel))
+                {
+                    //INTERDIT
+                    tableau[pos.x][pos.y] = VIDE;
+                }
+            }
+            if(pos.y>0)
+            {
+                Position nord = {pos.x , pos.y-1};
+                vector<Position> groupeNord;
+                bool gpNord = groupePris(nord, groupeNord);
+                if ((gpNord == true)&&(tableau[pos.x][pos.y-1]==joueurAutre))
+                {
+                    capturer(groupeNord);
+                    suicide = false;
+                }
+                if ((gpNord == true)&&(tableau[pos.x][pos.y-1]==joueurActuel))
+                {
+                    //INTERDIT
+                    tableau[pos.x][pos.y] = VIDE;
+                }
+            }
+            if(pos.x<TAILLE_TABLEAU-1)
+            {
+                Position est = {pos.x+1 , pos.y};
+                vector<Position> groupeEst;
+                bool gpEst = groupePris(est, groupeEst);
+                if ((gpEst == true)&&(tableau[pos.x+1][pos.y]==joueurAutre))
+                {
+                    capturer(groupeEst);
+                    suicide = false;
+                }
+                if ((gpEst == true)&&(tableau[pos.x+1][pos.y]==joueurActuel))
+                {
+                    //INTERDIT
+                    tableau[pos.x][pos.y] = VIDE;
+                }
+            }
+            if(pos.y<TAILLE_TABLEAU-1)
+            {
+                Position sud = {pos.x , pos.y+1};
+                vector<Position> groupeSud;
+                bool gpSud = groupePris(sud, groupeSud);
+                if ((gpSud == true)&&(tableau[pos.x][pos.y+1]==joueurAutre))
+                {
+                    capturer(groupeSud);
+                    suicide = false;
+                }
+                if ((gpSud == true)&&(tableau[pos.x][pos.y+1]==joueurActuel))
+                {
+                    //INTERDIT
+                    tableau[pos.x][pos.y] = VIDE;
+                }
+            }
         }
         else
         {
             
         }
-        
-        joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+        if(suicide)
+        {
+            //coup invalide : le joueur doit rejouer
+        }
+        else
+        {
+            //changement de joueur
+            joueurActuel = joueurActuel==NOIR?BLANC:NOIR;
+        }
     }
 }
 
@@ -74,24 +152,49 @@ Position Plateau::entreeClavier(Pierre joueur)
 }
 
 
+void Plateau::capturer(vector<Position> groupe)
+{
+    Pierre couleur;
+    int points = groupe.size();
+    for (int i = 0 ; i < groupe.size() ; i++)
+    {/*
+        couleur = groupe[i];
+        groupe[i] = VIDE;
+    */}
+    if (couleur == NOIR)
+    {
+        captureBlanc+=points;
+    }
+    if (couleur == BLANC)
+    {
+        captureNoir+=points;
+    }
+}
+
 bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 {
+    if(tableau[pos.x][pos.y] == VIDE) return false;
+    
+    
     outGroupe.push_back(pos);
     bool pris = true;
     
-    for(int i = -1 ; i < 2 ; i += 2)
+    vector<Position> nexts;
+    nexts.push_back({1,0});
+    nexts.push_back({-1,0});
+    nexts.push_back({0,1});
+    nexts.push_back({0,-1});
+    
+    for(int i = 0 ; i < nexts.size() ; i ++)
     {
-        for (int j = -1 ; j < 2 ; j+= 2)
+        Position next = {pos.x + nexts[i].x , pos.y + nexts[i].y};
+        bool estDejaDansGroupe = contain (outGroupe,pos);
+
+        if (next.x >= 0 && next.x < TAILLE_TABLEAU && next.y >= 0 && next.y < TAILLE_TABLEAU)
         {
-            Position next = {pos.x + i , pos.y + j};
-            bool estDejaDansGroupe = contain (outGroupe,pos);
-            
-            if (next.x >= 0 && next.x < TAILLE_TABLEAU && next.y >= 0 && next.y < TAILLE_TABLEAU)
-            {
-                if (tableau[next.x][next.y] == VIDE) pris = false;
-                else if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe)
-                     pris = pris && groupePris(next, outGroupe);
-            }
+            if (tableau[next.x][next.y] == VIDE) pris = false;
+            else if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe)
+                 pris = pris && groupePris(next, outGroupe);
         }
     }
     return pris;
