@@ -10,9 +10,7 @@
 int main(int argc, char** argv) {
     Plateau Jeu;
     Jeu.initialisation();
-    Jeu.affichage();
-    int k;
-    cin >> k;
+    Jeu.jouer();
     return 0;
 }
 
