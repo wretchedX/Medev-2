@@ -34,5 +34,7 @@ private:
     
 };
 
+bool contain ( vector<Position> v, Position e);
+
 #endif	/* PLATEAU_H */
 
