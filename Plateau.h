@@ -26,9 +26,12 @@ public:
     void initialisation();
     Position entreeClavier(Pierre joueur);
     void jouer();
-    
+    void capturer(vector<Position> groupe);
+//private 
+    int captureBlanc;
+    int captureNoir;
 private:
-
+    
 };
 
 #endif	/* PLATEAU_H */
