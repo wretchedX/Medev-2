@@ -127,7 +127,7 @@ Position Plateau::entreeClavier(Pierre joueur)
     int ligne = -1;
     int colonne = -1;
     Position choix;
-    cout << "Joueur" << joueur << ", entrez numero de ligne (pour passer entrer un nombre negatif)" << endl;
+    cout << "Joueur " << (joueur==NOIR?"Noir":"Blanc") << ", entrez numero de ligne (pour passer entrer un nombre negatif)" << endl;
     cin >> ligne;
     cout << endl << "Entrez numero de colonne" << endl;
     cin >> colonne;
