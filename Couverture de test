@@ -3,4 +3,5 @@ capturer (test de capture d'un groupe)
 groupePris (teste si un groupe de pions a encore des degres de liberté) (2 tests: 1 pour un groupe à la frontière, 1 pour un groupe au milieu du plateau)
 initialisation (teste si les cases du tableau sont bien initialisées à VIDE) 
 
-contain (teste si une position spécifique est bien dans un vecteur de position)
+contain (teste si une position spécifique est bien dans un vecteur de positions)
+contain (teste si une matrice de positions est bien dans un vecteur de matrices de positions)
