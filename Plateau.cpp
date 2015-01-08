@@ -62,13 +62,13 @@ void Plateau::jouer()
         affichage();
         Position pos = entreeClavier(joueurActuel);
         
-        bool suicide = true;
+        bool suicide = true; //verifier qu'on ne joue pas a un endroit interdit
         
         if(pos.x >= 0 && pos.x < TAILLE_TABLEAU && pos.y >= 0 && pos.y < TAILLE_TABLEAU)
         {
             tableau[pos.x][pos.y] = joueurActuel;
             
-            
+            //de chaque cote on regarde si le groupe est capture
             if(pos.x>0)
             {
                 Position ouest = {pos.x-1 , pos.y};
@@ -114,7 +114,7 @@ void Plateau::jouer()
                     suicide = false;
                 }
             }
-            if(suicide)
+            if(suicide) //coup invalide
             {
                 if(groupePris(pos,*(new vector<Position>)))
                 {
@@ -191,14 +191,14 @@ void Plateau::capturer(vector<Position> groupe)
     }
 }
 
-bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
+bool Plateau::groupePris(Position pos, vector<Position> &outGroupe) // fonction qui va etre appelee recursivement pour determiner les libertes d'un groupe
 {
     if(tableau[pos.x][pos.y] == VIDE) return true;
     
     outGroupe.push_back(pos);
     bool pris = true;
     
-    vector<Position> nexts;
+    vector<Position> nexts; // positions alentour dans les 4 directions
     nexts.push_back({1,0});
     nexts.push_back({-1,0});
     nexts.push_back({0,1});
@@ -214,7 +214,7 @@ bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
             else {
                 bool estDejaDansGroupe = contain (outGroupe,next);
                 if (tableau[next.x][next.y] == tableau[pos.x][pos.y] && !estDejaDansGroupe) {
-                     pris = pris && groupePris(next, outGroupe);
+                     pris = pris && groupePris(next, outGroupe); // recursivite, on passe a la pierre adjacente
                 }
             }
         }
