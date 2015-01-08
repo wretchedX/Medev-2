@@ -1,4 +1,4 @@
-/* 
+/*! 
  * File:   Plateau.cpp
  * 
  * Rédigé par
@@ -12,8 +12,6 @@
  */
 
 #include "Plateau.h"
-///#include <algorithm>
-///Algorithm ne marche pas...
 
 bool contain ( vector<Position> v, Position e)
 {
@@ -47,7 +45,11 @@ bool contain (vector <vector <vector <Pierre> > > v, vector< vector<Pierre> > e)
 
 
 
-
+/*!
+ * @brief Constructeur de Plateau
+ * 
+ * Constructeur de Plateau, ne fait rien.
+ */
 Plateau::Plateau() {
 }
 

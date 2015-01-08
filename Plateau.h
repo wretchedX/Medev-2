@@ -20,6 +20,13 @@
 
 
 using namespace std;
+
+/*!
+ * @class Plateau
+ * @brief La classe Plateau
+ * 
+ * Cette classe gère le plateau de jeu et l'affichage et diverses autres choses
+ */
 class Plateau {
 public:
     Plateau();
