@@ -1,14 +1,9 @@
 /*! 
- * File:   Plateau.cpp
+ * @file Plateau.cpp
  * 
- * Rédigé par
- * Maximilien Bellot
- * Carl-Alexandre Michau
- * Nicolas Muller
+ * @author Maximilien Bellot, Carl-Alexandre Michau, Nicolas Muller
  * 
- * Created on 1 décembre 2014, 15:45
- * 
- * 
+ * @date Created on 1 décembre 2014, 15:45
  */
 
 #include "Plateau.h"
@@ -199,7 +194,16 @@ void Plateau::capturer(vector<Position> groupe)
     }
 }
 
-bool Plateau::groupePris(Position pos, vector<Position> &outGroupe) // fonction qui va etre appelee recursivement pour determiner les libertes d'un groupe
+/*!
+ * @brief Groupe pris
+ * 
+ * Fonction récursive permettant de regarder si un groupe est en capture
+ * 
+ * @param pos : La position
+ * @param outGroupe : Pointeur sur le tableau des pierres précédemment regardées par la fonction sur ce groupe de pierres
+ * @return : true si groupe pris, false sinon
+ */
+bool Plateau::groupePris(Position pos, vector<Position> &outGroupe)
 {
     if(tableau[pos.x][pos.y] == VIDE) return true;
     
