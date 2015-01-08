@@ -1,8 +1,14 @@
 /* 
  * File:   Plateau.cpp
- * Author: eleve
+ * 
+ * Rédigé par
+ * Maximilien Bellot
+ * Carl-Alexandre Michau
+ * Nicolas Muller
  * 
  * Created on 1 décembre 2014, 15:45
+ * 
+ * 
  */
 
 #include "Plateau.h"

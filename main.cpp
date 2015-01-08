@@ -1,7 +1,11 @@
 /* 
  * File:   main.cpp
- * Author: eleve
  *
+ * Rédigé par
+ * Maximilien Bellot
+ * Carl-Alexandre Michau
+ * Nicolas Muller
+ * 
  * Created on 1 décembre 2014, 11:04
  */
 

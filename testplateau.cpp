@@ -1,3 +1,11 @@
+/* 
+ * Rédigé par
+ * Maximilien Bellot
+ * Carl-Alexandre Michau
+ * Nicolas Muller
+ * 
+ */
+
 #include <gtest/gtest.h>
 #include "Plateau.h"
 
@@ -24,7 +32,7 @@ TEST(plateau_groupePris_test, prisDansUnCoin) {
     EXPECT_EQ(true, p.groupePris( pos, vec ));
 }
 
-TEST(plateau_groupePris_test, prisAuMilieu) {
+TEST(plateau_groupePris_test, prisAuMilieu) { 
     Plateau p;
     p.initialisation();
     p.tableau[1][1] = BLANC;
