@@ -12,8 +12,8 @@
  */
 
 #include "Plateau.h"
-//#include <algorithm>
-//Algorithm ne marche pas...
+///#include <algorithm>
+///Algorithm ne marche pas...
 
 bool contain ( vector<Position> v, Position e)
 {
